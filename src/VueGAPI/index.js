@@ -1,4 +1,3 @@
-import { gapi } from './gapi'
 import GoogleAuthService from './GoogleAuthService'
 
 const googleAuthService = new GoogleAuthService()
@@ -9,18 +8,17 @@ export default {
     Vue.gapiLoadClientPromise = null
 
     const resolveAuth2Client = (resolve, reject) => {
-      if (!gapi.auth) {
-
-        gapi.load('client:auth2', () => {
-          Vue.gapiLoadClientPromise = gapi.client.init(clientConfig)
+      if (!window.gapi.auth) {
+        window.gapi.load('client:auth2', () => {
+          Vue.gapiLoadClientPromise = window.gapi.client.init(clientConfig)
             .then(() => {
               console.info('gapi client initialised.')
-              googleAuthService.authInstance = gapi.auth2.getAuthInstance()
-              resolve(gapi)
+              googleAuthService.authInstance = window.gapi.auth2.getAuthInstance()
+              resolve(window.gapi)
             })
         })
       } else {
-        resolve(gapi)
+        resolve(window.gapi)
       }
     }
 
