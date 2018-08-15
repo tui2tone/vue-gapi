@@ -7,9 +7,19 @@
 ## Installation
 
 ```bash
-npm install --save vue-gapi
-or
-yarn add vue-gapi
+yarn add https://github.com/tui2tone/vue-gapi
+```
+
+### Include Google Api Script Manually
+
+#### Example for Nuxt.js
+
+```
+head: {
+    script: [
+        { src: 'https://apis.google.com/js/api.js' }
+    ],
+},
 ```
 
 ## Usage
